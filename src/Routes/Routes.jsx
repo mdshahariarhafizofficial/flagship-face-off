@@ -3,6 +3,7 @@ import Root from "../Layouts/Root";
 import Home from "../Pages/Home/Home";
 import About from "../Pages/About/About";
 import Favorite from "../Pages/Favorite/Favorite";
+import MobileDetails from "../Pages/MobileDetails/MobileDetails";
 
 const router = createBrowserRouter([
     {
@@ -12,7 +13,8 @@ const router = createBrowserRouter([
       children:[
         {
             index: true, 
-            Component: Home
+            Component: Home,
+            loader: () => fetch('phones.json')
         },
         {
           path: 'about',
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
         {
           path: 'favorite',
           Component: Favorite
+        },
+        {
+          path: 'mobiledetails',
+          Component: MobileDetails
         }
       ]
     }
