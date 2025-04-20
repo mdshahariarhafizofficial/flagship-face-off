@@ -1,8 +1,41 @@
 import React from "react";
+import { FaCartPlus } from "react-icons/fa";
+import { MdBookmarkAdd } from "react-icons/md";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
+  const menu = (
+    <>
+      <li>
+        <NavLink to="/" className={
+            ({isActive}) => isActive? "text-blue-600 border-b-2 rounded-none": ''
+        }>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about" className={
+            ({isActive}) => isActive? "text-blue-600 border-b-2 rounded-none": ''
+        }>About</NavLink>
+      </li>
+      <li>
+        <NavLink to="/cart" className={
+            ({isActive}) => isActive? "text-blue-600 border-b-2 rounded-none": ''
+        }>
+          <FaCartPlus size={20} />
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/favorite" className={
+            ({isActive}) => isActive? "text-blue-600 border-b-2 rounded-none": ''
+        }>
+          <MdBookmarkAdd size={20} />
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar max-w-[1688px] mx-auto bg-base-100 p-0">
+      {/* NavBar Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -24,32 +57,25 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-lg font-semibold"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {
+                menu
+            }
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Link to="/" className="text-2xl font-bold">
+          FlagshipFaceOff
+        </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+
+      {/* Navbar End */}
+      <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 text-lg font-semibold flex gap-1">
+            {
+                menu
+            }
         </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
       </div>
     </div>
   );
