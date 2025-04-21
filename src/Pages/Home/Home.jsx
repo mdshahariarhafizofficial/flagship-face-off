@@ -7,9 +7,10 @@ const Home = () => {
   const phonesData = useLoaderData();
   const [phones, setPhones] = useState(phonesData); 
   const handleSearch = (e,text)=>{
+    
     e.preventDefault();
     const searchResult = 
-      phones.filter(phone => 
+      phonesData.filter(phone => 
         phone.name.toLowerCase().includes(text.toLowerCase())||
         phone.brand.toLowerCase().includes(text.toLowerCase())
       )
